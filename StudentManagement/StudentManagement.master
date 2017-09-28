@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="StudentManagement.master.cs"  Inherits="StudentManagement.StudentManagement" %>
+<%@ Register Src="~/Controls/Banner.ascx" TagName="Banner" TagPrefix="ucBan" %>
+<%@ Register Src="~/Controls/Navigation.ascx" TagName="Nav" TagPrefix="ucNav" %>
+<%@ Register Src="~/Controls/Notifications.ascx" TagName="Notifications" TagPrefix="ucNotifications" %>
+<%@ Register Src="~/Controls/Classes.ascx" TagName="Classes" TagPrefix="ucClasses" %>
+<%@ Register Src="~/Controls/Grades.ascx" TagName="Grades" TagPrefix="ucGrades" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Student Management</title>
+</head>
+<body>
+<header class="TopContent" >
+    <ucBan:Banner ID="Banner" runat="server" />
+
+</header>
+		<nav class = "PrimaryNavigation">
+        <ul>
+            <asp:SiteMapDataSource ID="siteMapData" runat="server" ShowStartingNode="false" />
+            <asp:Repeater ID="menu" runat="server" DataSourceID="siteMapData">
+                <ItemTemplate>
+                <li>
+                    <a href="<%# Eval("url") %>"><%# Eval("title") %></a>
+                </li>
+                </ItemTemplate>
+            </asp:Repeater>
+        </ul>
+   </nav>   
+<aside><ucNav:Nav ID="Navigation" runat="server"/> </aside>
+<section><ucNotifications:Notifications ID="Notifications" runat="server"/> </section>
+<section><ucClasses:Classes ID="Classes" runat="server"/> </section>
+<footer><ucGrades:Grades ID="Grades" runat="server"/> </footer>
+<div id="container">
+<form runat="server">
+    <asp:ContentPlaceHolder id="head" runat="server" /> 
+    <asp:ContentPlaceHolder id="contentPlaceHolder1" runat="server" /> 
+</form>
+</div>
+</body>
+</html>

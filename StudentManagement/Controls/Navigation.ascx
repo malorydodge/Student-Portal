@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Navigation.ascx.cs"  Inherits="StudentManagement.Controls.Navigation" %>
+<asp:Label id="lblNav" Text= "Navigation" runat="server"></asp:Label> 
